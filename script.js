@@ -1,3 +1,24 @@
+var dateDisplayEl = $("#current-day");
+var timeBlock = $(".time-block")
+// var eventDescriptionInputEl = $(".description")
+var saveButton = $(".saveBtn")
+
+function displayDay() {
+  var todayDate = dayjs().format('dddd, MMMM D');
+  dateDisplayEl.text(todayDate);
+}
+
+displayDay();
+
+function saveEvent(event) {
+  event.preventDefault();
+  var eventDescription = document.querySelector(".description").value;
+  localStorage.setItem("event", eventDescription);
+}
+
+saveButton.on('click', saveEvent);
+
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.

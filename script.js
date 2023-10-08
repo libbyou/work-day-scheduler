@@ -3,7 +3,7 @@ var timeBlock = $(".time-block");
 // var eventDescriptionInputEl = $(".description");
 var saveButton = $('.saveBtn');
 var todayDate = dayjs().format('dddd, MMMM D');
-var nowHour = dayjs().format('h');
+var nowHour = dayjs().format('HH');
 // console.log(nowTime);
 // var currentHour = $('div').id
 // console.log($('div'))
@@ -34,17 +34,27 @@ function init() {
 
   for (var i = 0; i < listOfParentContainer.length; i++) {
     // console.log(listOfParentContainer[i].id, nowHour)
-    var parent = listOfParentContainer[i]
+    // var parent = listOfParentContainer[i]
     // console.log(parent)
+    // var replacedNum = $('#' + listOfParentContainer[i].id).children(".hour").text()
+    // console.log(replacedNum)
+
     var replacedNum = listOfParentContainer[i].id.replace('hour-', "")
+
+
+
+
     var eventDescriptionInputEl = $("#" + listOfParentContainer[i].id).children("textarea.description")
     if (replacedNum == nowHour) {
       eventDescriptionInputEl.addClass('present')
     } else if (replacedNum > nowHour) {
+      console.log(replacedNum, nowHour, replacedNum > nowHour)
       eventDescriptionInputEl.addClass('future')
     } else {
       eventDescriptionInputEl.addClass('past')
     }
+
+    
   }
 
 
